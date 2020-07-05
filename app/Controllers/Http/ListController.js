@@ -8,7 +8,8 @@ const { validateAll } = use('Validator')
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 /**
- * Resourceful controller for interacting with lists
+ * Resourceful controller
+ for interacting with lists
  */
 class ListController {
   async index ({ response }) {
