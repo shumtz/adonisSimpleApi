@@ -18,11 +18,12 @@ const Route = use('Route')
 
 
 Route.on('/login').render('login')
+Route.on('/register').render('register')
 Route.on('/dashboard').render('dashboard').middleware('auth')
 
 Route.post('/auth', 'UserController.login')
 Route.get('/auth/show/:id', 'UserController.show').middleware('auth')
-Route.post('register', 'UserController.create')
+Route.post('/auth/register', 'UserController.create')
 
 Route.on('/').render('main')
 Route.get('/api', 'ListController.index')

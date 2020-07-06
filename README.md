@@ -7,5 +7,5 @@ This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
 - [x] CRUD
 - [x] Auth
 - [ ] E-mail send
-- [ ] View login
+- [x] View login and register
 - [ ] View Dashboard

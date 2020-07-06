@@ -6,13 +6,14 @@
 </head>
 <body>
 	<div class="container">
-	<p class="text-login">Login</p>
-	<form class="form-login" action="/auth" method="post">
+	<p class="text-login">Register</p>
+	<form class="form-login" action="/auth/register" method="post">
+	  <input type="username" name="username" placeholder="Username" required="">	
 	  <input type="email" name="email" placeholder="E-mail" required>
 	  <input type="password" name="password" placeholder="Senha" required>
 	  <button class="button-login" type="submit">Enviar</button>
 	</form>
-	<p class="account"><a href="/register">Não tenho conta</a></p>
+	<p class="account"><a href="/login">Tenho conta</a></p>
 	</div>
 </body>
 </html>

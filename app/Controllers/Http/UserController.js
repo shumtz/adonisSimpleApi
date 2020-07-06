@@ -20,9 +20,7 @@ class UserController {
             })
 
             if (validation.fails()) {
-                return response.status(401).send({
-                    message: validation.messages()
-                })
+                return response.redirect('login')
             }
 
             const {
@@ -31,9 +29,7 @@ class UserController {
             } = request.all()
             const login = await auth.attempt(email, password)
 
-
             await auth.check()
-
 
             if (login) {
                 return response.status(200).redirect('/dashboard')
@@ -54,12 +50,7 @@ class UserController {
         const data = request.only(["username", "email", "password"])
         const create = await User.create(data)
 
-        return 'Registered successfully'
-
-        return response.json({
-            "status": 200,
-            "message": "Usuario criado"
-        })
+        return response.status(200).redirect('/login')
     }
 
     async show({
