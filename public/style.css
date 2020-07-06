@@ -16,6 +16,36 @@ body {
   padding: 0;
 }
 
+#text {
+  display: grid;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  text-align: center;
+  font-weight: bold;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#text h1 {
+  color: #fff;
+}
+
+#text span {
+  padding: 10px;
+  font-size: 20px;
+}
+
+#text a {
+  color: #ddd;
+  text-decoration: none;
+}
+
+#text a:hover {
+  opacity: 0.8;
+}
+
 .container {
   margin-top: 20%;
 }
@@ -31,7 +61,7 @@ body {
   display: grid;
   margin: 0px auto;
   max-width: 400px;
-  padding: 20px; 
+  padding: 20px;
 }
 
 .form-login input {
