@@ -1,7 +1,5 @@
-'use strict'
-
-const Task = use('App/Models/Task')
-const { validateAll } = use('Validator')
+const Task = use('App/Models/Task');
+const { validateAll } = use('Validator');
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -12,47 +10,49 @@ const { validateAll } = use('Validator')
  for interacting with lists
  */
 class ListController {
-  async index ({ response }) {
+  async index() {
     const task = Task.all();
     return task;
   }
-  async create ({ request, response, auth }) {
-    try {
 
+  async create({ request, response }) {
+    try {
       const validation = await validateAll(request.all(), {
-        task: 'required'
-      })
+        task: 'required',
+      });
 
       if (validation.fails()) {
-        return response.status(401).send({ message: validation.messages() })
+        return response.status(401).send({ message: validation.messages() });
       }
 
-    const taskCreate = request.only(['task']);
-    const create = await Task.create(taskCreate)
+      const taskCreate = request.only(['task']);
+      const create = await Task.create(taskCreate);
 
-    return create;
-    } catch(err) {
-      return response.status(500).send({error: `${err}`});
+      return create;
+    } catch (err) {
+      return response.status(500).send({ error: `${err}` });
     }
   }
 
-  async show ({ params, request, response, view }) {
-    const taskUpdate = await Task.query().where('id', params.id).firstOrFail()
+  async show({
+    params,
+  }) {
+    const taskUpdate = await Task.query().where('id', params.id).firstOrFail();
 
-    return taskUpdate
+    return taskUpdate;
   }
 
-  async destroy ({ params, request, response }) {
-    const taskDelete = await Task.query().where('id', params.id).firstOrFail()
+  async destroy({ params, response }) {
+    const taskDelete = await Task.query().where('id', params.id).firstOrFail();
 
-    await taskDelete.delete()
+    await taskDelete.delete();
 
     return response.json({
-      "status": "sucess",
-      "message": "Task delete",
-      "data": taskDelete
-    })
+      status: 'sucess',
+      message: 'Task delete',
+      data: taskDelete,
+    });
   }
 }
 
-module.exports = ListController
+module.exports = ListController;

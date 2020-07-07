@@ -31,7 +31,11 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0"
+  },
   "autoload": {
     "App": "./app"
   }

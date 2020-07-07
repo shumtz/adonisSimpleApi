@@ -1,5 +1,3 @@
-'use strict'
-
 /*
 |--------------------------------------------------------------------------
 | Routes
@@ -14,19 +12,25 @@
 */
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
-const Route = use('Route')
+const Route = use('Route');
 
+// Views
+Route.on('/').render('main');
+Route.on('/login').render('login.login');
+Route.on('/register').render('login.register');
+Route.on('/dashboard').render('login.dashboard').middleware('auth');
 
-Route.on('/login').render('login')
-Route.on('/register').render('register')
-Route.on('/dashboard').render('dashboard').middleware('auth')
+// Auth
+Route.group(() => {
+  Route.post('/', 'UserController.login');
+  Route.get('/:id', 'UserController.show').middleware('auth');
+  Route.post('/register', 'UserController.create');
+}).prefix('/auth');
 
-Route.post('/auth', 'UserController.login')
-Route.get('/auth/show/:id', 'UserController.show').middleware('auth')
-Route.post('/auth/register', 'UserController.create')
-
-Route.on('/').render('main')
-Route.get('/api', 'ListController.index')
-Route.post('/api/create', 'ListController.create')
-Route.get('/api/:id', 'ListController.show')
-Route.delete('/api/:id/delete', 'ListController.destroy')
+// Api
+Route.group(() => {
+  Route.get('/', 'ListController.index');
+  Route.post('/create', 'ListController.create');
+  Route.get('/:id', 'ListController.show');
+  Route.delete('/:id/delete', 'ListController.destroy');
+}).prefix('/api/v1');

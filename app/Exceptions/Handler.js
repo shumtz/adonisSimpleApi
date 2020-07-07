@@ -1,6 +1,4 @@
-'use strict'
-
-const BaseExceptionHandler = use('BaseExceptionHandler')
+const BaseExceptionHandler = use('BaseExceptionHandler');
 
 /**
  * This class handles all exceptions thrown during
@@ -20,13 +18,13 @@ class ExceptionHandler extends BaseExceptionHandler {
    *
    * @return {void}
    */
-  async handle (error, { request, response, view }) {
-      if (error.name === 'InvalidSessionException') {
-        return response.send(view.render('errors.sessioninvalid'))
-      }
-      if (error.name === 'HttpException') {
-        response.send('PAGINA NÃO ENCONTRADA')
-      }
+  async handle(error, { response, view }) {
+    if (error.name === 'InvalidSessionException') {
+      response.send(view.render('errors.sessioninvalid'));
+    }
+    if (error.name === 'HttpException') {
+      response.send('PAGINA NÃO ENCONTRADA');
+    }
   }
 
   /**
@@ -39,8 +37,6 @@ class ExceptionHandler extends BaseExceptionHandler {
    *
    * @return {void}
    */
-  async report (error, { request }) {
-  }
 }
 
-module.exports = ExceptionHandler
+module.exports = ExceptionHandler;

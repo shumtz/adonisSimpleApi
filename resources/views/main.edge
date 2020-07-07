@@ -2,8 +2,31 @@
 <html>
 <head>
 	<title>Pagina</title>
+	{{ style('style') }}
+	{{ style('css/bootstrap.min.css') }}
+	{{ style('css/mdb.min.css') }}
+	{{ style('admin/css/adminlte.min.css') }}
 </head>
 <body>
 
+
+
+	<div class="info-box">
+	  <!-- Apply any bg-* class to to the icon to color it -->
+	  <span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
+	  <div class="info-box-content">
+	    <span class="info-box-text">Likes</span>
+	    <span class="info-box-number">93,139</span>
+	  </div>
+	  <!-- /.info-box-content -->
+	</div>
+	<!-- /.info-box -->
+
+
+
+{{ script('js/bootstrap.min.js') }}
+{{ script('admin/js/adminlte.min.js') }}
+{{ script('js/mdb.min.js')}}
+<script src="https://use.fontawesome.com/823a039313.js"></script>
 </body>
 </html>
